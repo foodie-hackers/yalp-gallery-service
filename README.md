@@ -1,1 +1,1 @@
-# Yalp Gallery - Service
+'# Yalp Gallery - Proxy' 
