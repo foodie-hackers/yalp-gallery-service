@@ -1,0 +1,37 @@
+{
+  "name": "yalp-gallery-service",
+  "version": "1.0.0",
+  "description": "'# Yalp Gallery - Proxy'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "react-dev": "webpack -d --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtlin91/yalp-gallery-service.git"
+  },
+  "keywords": [],
+  "author": "Justin Lin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtlin91/yalp-gallery-service/issues"
+  },
+  "homepage": "https://github.com/jtlin91/yalp-gallery-service#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^5.1.0",
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0"
+  }
+}
