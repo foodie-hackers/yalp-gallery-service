@@ -1,1 +1,1 @@
-'# Yalp Gallery - Proxy' 
+# Yalp Gallery - Proxy
