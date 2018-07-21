@@ -4,7 +4,7 @@
   "description": "'# Yalp Gallery - Proxy'",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "react-dev": "webpack -d --watch",
     "server": "nodemon server/index.js",
     "fix": "eslint --fix"
