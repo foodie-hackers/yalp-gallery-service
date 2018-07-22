@@ -4,7 +4,7 @@
   "description": "'# Yalp Gallery - Proxy'",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "react-dev": "webpack -d --watch",
     "server": "nodemon server/index.js",
     "fix": "eslint --fix"
@@ -26,11 +26,12 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "eslint": "^5.1.0",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
-    "eslint": "^5.1.0",
+    "jest": "^23.4.1",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0"
   },
