@@ -15,7 +15,7 @@ CREATE TABLE restaurants (
 CREATE TABLE photos (
   id int NOT NULL AUTO_INCREMENT,
   restaurant_id int NOT NULL,
-  url varchar(50) NOT NULL,
+  url varchar(100) NOT NULL,
   caption varchar(255) NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)

@@ -99,6 +99,44 @@ const dummy = [{ id: 1, name: 'Tacorea' },
   { id: 99, name: 'Eight Tables by George Chen' },
   { id: 100, name: 'Jardiniere' }];
 
+// Photo links
+const urls = ['https://s3-us-west-1.amazonaws.com/yalp-photos/Drink+0.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Drink+1.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Drink+2.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Drink+3.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Food+0.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Food+1.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Food+2.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Food+3.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Food+4.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Food+5.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Food+6.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Food+7.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Inside+0.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Inside+1.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Inside+2.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Inside+3.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Inside+4.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Menu+0.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Menu+1.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Menu+2.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Menu+3.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Outside+1.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Outside+2.jpg',
+  'https://s3-us-west-1.amazonaws.com/yalp-photos/Outside+3.jpg'];
+
+// Captions
+const caps = ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor.',
+  'Fusce eget erat lacus. Nam eget condimentum lacus.',
+  'Morbi pharetra ex at feugiat elementum. Ut luctus eget elit non hendrerit.',
+  'Suspendisse aliquam sollicitudin neque, et ornare dui accumsan sit amet.',
+  'Sed tincidunt quis elit a semper.',
+  'Nulla sagittis dapibus diam.',
+  'Quisque pulvinar eleifend risus, id aliquet nunc congue eget.',
+  'Ut luctus eget elit non hendrerit.',
+  'Aliquam maximus in purus sit amet tempus.',
+  'Duis eget egestas lectus. Proin bibendum mauris vitae vulputate lobortis.'];
+
 
 const mysql = require('mysql');
 
@@ -113,10 +151,21 @@ connection.connect();
 
 const addDummy = (callback) => {
   for (let i = 0; i < dummy.length; i += 1) {
-    const str = `INSERT into restaurants (name) VALUES ("${dummy[i].name}"`;
+    const str = `INSERT into restaurants (name) VALUES ("${dummy[i].name}")`;
     connection.query(str, (err) => {
       if (err) {
         callback(err);
+      } else {
+        for (let j = 0; j < 5; j += 1) {
+          const rngURL = Math.floor(Math.random() * 24);
+          const rngCAP = Math.floor(Math.random() * 9);
+          const str2 = `INSERT into photos (restaurant_id, url, caption) VALUES (${i}, "${urls[rngURL]}", "${caps[rngCAP]}")`;
+          connection.query(str2, (err2) => {
+            if (err2) {
+              callback(err2);
+            }
+          });
+        }
       }
     });
   }
