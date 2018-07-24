@@ -8,3 +8,27 @@ const connection = mysql.createConnection({
 });
 
 connection.connect();
+
+const getPhotos = (id, callback) => {
+  const str = `SELECT url FROM photos WHERE restaurant_id=${id}`;
+  connection.query(str, (err, results) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+const getCaps = (id, callback) => {
+  const str = `SELECT captaion FROM photos WHERE restaurant_id=${id}`;
+  connection.query(str, (err, results) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+module.exports = { getPhotos, getCaps };
