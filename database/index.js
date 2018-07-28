@@ -21,7 +21,7 @@ const getPhotos = (id, callback) => {
 };
 
 const getCaps = (id, callback) => {
-  const str = `SELECT captaion FROM photos WHERE restaurant_id=${id}`;
+  const str = `SELECT caption FROM photos WHERE restaurant_id=${id}`;
   connection.query(str, (err, results) => {
     if (err) {
       callback(err);
