@@ -36,6 +36,7 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mysql": "^2.16.0",
     "npm": "^6.2.0",
