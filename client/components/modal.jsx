@@ -7,7 +7,7 @@ class Modal extends React.Component {
     super(props);
 
     this.state = {
-      current: this.props.index,
+      current: parseInt(this.props.index),
     };
 
     this.prev = this.prev.bind(this);
