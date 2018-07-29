@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Caption = styled.div`
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.75);
   color: white;
   bottom: 0;
   width: 100%;
