@@ -1,5 +1,6 @@
 import React from 'react';
 import Photo from './photo';
+import Arrow from './arrow';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -8,6 +9,8 @@ class Modal extends React.Component {
     this.state = {
       current: 0,
     };
+    this.prev = this.prev.bind(this);
+    this.next = this.next.bind(this);
   }
 
   prev() {
@@ -31,9 +34,10 @@ class Modal extends React.Component {
     const { photos } = this.props;
     return (
       <div>
-        Hello
+        <Arrow click={this.prev} icon='<' />
+        <Arrow click={this.next} icon='>' />
         <Photo photo={photos[current].url}/>
-      </div>
+    </div>
     );
   }
 }
