@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Photo = ({ photo, caption }) => (
+const Photo = ({ photo, caption, size, toggleModal, index }) => (
   <div>
-    <img src={photo} />
+    <img width={size} src={photo} onClick={toggleModal} index={index}/>
     <div>
       {caption}
     </div>

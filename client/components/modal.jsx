@@ -7,11 +7,17 @@ class Modal extends React.Component {
     super(props);
 
     this.state = {
-      current: 0,
+      current: this.props.index,
     };
+
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);
   }
+
+  // componentDidMount() {
+  //   const { index } = this.props;
+  //   this.setState({ current: index });
+  // }
 
   prev() {
     const { current } = this.state;
@@ -35,10 +41,10 @@ class Modal extends React.Component {
     const { captions } = this.props;
     return (
       <div>
-        <Arrow click={this.prev} icon='<' />
-        <Arrow click={this.next} icon='>' />
-        <Photo photo={photos[current].url} caption={captions[current].caption}/>
-    </div>
+        <Arrow click={this.prev} icon="<" />
+        <Arrow click={this.next} icon=">" />
+        <Photo photo={photos[current].url} caption={captions[current].caption} />
+      </div>
     );
   }
 }
