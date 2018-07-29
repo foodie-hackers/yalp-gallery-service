@@ -1,7 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 import Modal from './modal';
-import Photo from './photo';
+import Thumb from './thumb';
+import Arrow from './arrow';
 
 
 class App extends React.Component {
@@ -18,6 +19,8 @@ class App extends React.Component {
 
     this.getPhotos = this.getPhotos.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.prev = this.prev.bind(this);
+    this.next = this.next.bind(this);
   }
 
   componentDidMount() {
@@ -41,10 +44,41 @@ class App extends React.Component {
     this.setState({ modal: !modal, modalIndex: index });
   }
 
+  prev() {
+    const { current } = this.state;
+    const { photos } = this.state;
+    const last = photos.length - 1;
+    const index = current === 0 ? last : current - 1;
+    this.setState({ current: index });
+  }
+
+  next() {
+    const { current } = this.state;
+    const { photos } = this.state;
+    const last = photos.length - 1;
+    const index = current === last ? 0 : current + 1;
+    this.setState({ current: index });
+  }
+
   render() {
     const {
       photos, captions, modal, current, modalIndex,
     } = this.state;
+
+    let one;
+    let three;
+
+    if (current === 0) {
+      one = photos.length - 1;
+      three = current + 1;
+    } else if (current === photos.length - 1) {
+      one = current - 1;
+      three = 0;
+    } else {
+      one = current - 1;
+      three = current + 1;
+    }
+    const two = current;
 
     return (
       <div>
@@ -52,12 +86,25 @@ class App extends React.Component {
           <h1>
             Yalp: Photo Gallery
           </h1>
-          <Photo
-            photo={photos[current].url}
+          <Arrow click={this.prev} icon="<" />
+          <Arrow click={this.next} icon=">" />
+          <Thumb
+            photo={photos[one].url}
             toggleModal={this.toggleModal}
-            caption={captions[current].caption}
-            index={current}
-            size="250"
+            caption={captions[one].caption}
+            index={one}
+          />
+          <Thumb
+            photo={photos[two].url}
+            toggleModal={this.toggleModal}
+            caption={captions[two].caption}
+            index={two}
+          />
+          <Thumb
+            photo={photos[three].url}
+            toggleModal={this.toggleModal}
+            caption={captions[three].caption}
+            index={three}
           />
         </div>
 
