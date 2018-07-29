@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Photo = ({
+const Thumb = ({
   photo, caption, toggleModal, index
 }) => (
   <div>
-    <img src={photo} onClick={toggleModal} index={index} />
+    <img width='250' src={photo} onClick={toggleModal} index={index} />
     <div>
       {caption}
     </div>
   </div>
 );
 
-export default Photo;
+export default Thumb;
