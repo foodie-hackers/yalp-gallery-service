@@ -32,11 +32,12 @@ class Modal extends React.Component {
   render() {
     const { current } = this.state;
     const { photos } = this.props;
+    const { captions } = this.props;
     return (
       <div>
         <Arrow click={this.prev} icon='<' />
         <Arrow click={this.next} icon='>' />
-        <Photo photo={photos[current].url}/>
+        <Photo photo={photos[current].url} caption={captions[current].caption}/>
     </div>
     );
   }
