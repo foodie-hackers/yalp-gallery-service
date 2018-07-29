@@ -1,9 +1,36 @@
 import React from 'react';
 import $ from 'jquery';
+import styled from 'styled-components';
 import Modal from './modal';
 import Thumb from './thumb';
 import Arrow from './arrow';
 
+const Carousel = styled.div`
+  display: flex;
+  position: relative;
+  width: 660px;
+  margin: auto;
+  align-items: center;
+`;
+
+const Left = styled.span`
+  cursor: pointer;
+  position: absolute;
+  padding: 20px;
+  align-items: center;
+  z-index: 3;
+  user-select: none;
+`;
+
+const Right = styled.span`
+  cursor: pointer;
+  position: absolute;
+  padding: 20px;
+  align-items: center;
+  z-index: 3;
+  user-select: none;
+  right: 0;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -86,26 +113,34 @@ class App extends React.Component {
           <h1>
             Yalp: Photo Gallery
           </h1>
-          <Arrow click={this.prev} icon="<" />
-          <Arrow click={this.next} icon=">" />
-          <Thumb
-            photo={photos[one].url}
-            toggleModal={this.toggleModal}
-            caption={captions[one].caption}
-            index={one}
-          />
-          <Thumb
-            photo={photos[two].url}
-            toggleModal={this.toggleModal}
-            caption={captions[two].caption}
-            index={two}
-          />
-          <Thumb
-            photo={photos[three].url}
-            toggleModal={this.toggleModal}
-            caption={captions[three].caption}
-            index={three}
-          />
+          <Carousel>
+            <Left>
+              <Arrow click={this.prev} icon="<" />
+            </Left>
+
+            <Right>
+              <Arrow click={this.next} icon=">" />
+            </Right>
+
+            <Thumb
+              photo={photos[one].url}
+              toggleModal={this.toggleModal}
+              caption={captions[one].caption}
+              index={one}
+            />
+            <Thumb
+              photo={photos[two].url}
+              toggleModal={this.toggleModal}
+              caption={captions[two].caption}
+              index={two}
+            />
+            <Thumb
+              photo={photos[three].url}
+              toggleModal={this.toggleModal}
+              caption={captions[three].caption}
+              index={three}
+            />
+          </Carousel>
         </div>
 
         <div>
