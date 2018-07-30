@@ -33,7 +33,6 @@ const PhotoBox = styled.div`
 `;
 
 const InfoBox = styled.div`
-
   float: right;
   height: 100%;
   width: 20%
@@ -65,6 +64,16 @@ const Right = styled.div`
   user-select: none;
 `;
 
+const Close = styled.div`
+  position: absolute;
+  top: 2.5%;
+  right: 15%;
+  font-family: arial;
+  cursor: pointer;
+  color: grey;
+  font-size: 12;
+`;
+
 class Modal extends React.Component {
   constructor(props) {
     super(props);
@@ -75,6 +84,15 @@ class Modal extends React.Component {
 
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);
+    this.closeEsc = this.closeEsc.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('keyup', this.closeEsc, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keyup', this.closeEsc, false);
   }
 
   prev() {
@@ -93,14 +111,24 @@ class Modal extends React.Component {
     this.setState({ current: index });
   }
 
+  closeEsc(e) {
+    const { close } = this.props;
+    if (e.keyCode === 27) {
+      close();
+    }
+    window.removeEventListener('keyup', this.closeEsc, false);
+  }
+
   render() {
     const { current } = this.state;
     const { photos } = this.props;
     const { captions } = this.props;
+    const { close } = this.props;
     return (
       <div>
         <Overlay>
           <ModalBox>
+            <Close type='button' onClick={close}>Close X</Close>
             <PhotoBox>
               <Left>
                 <Arrow click={this.prev} icon="<" />

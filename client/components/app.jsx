@@ -66,9 +66,10 @@ class App extends React.Component {
 
   toggleModal(e) {
     const { modal } = this.state;
-    const index = e.target.getAttribute('index');
+    this.setState({ modal: !modal });
 
-    this.setState({ modal: !modal, modalIndex: index });
+    const index = e.target.getAttribute('index');
+    this.setState({ modalIndex: index });
   }
 
   prev() {
@@ -144,7 +145,7 @@ class App extends React.Component {
         </div>
 
         <div>
-          {modal && <Modal photos={photos} captions={captions} index={modalIndex} />}
+          {modal && <Modal photos={photos} captions={captions} index={modalIndex} close={this.toggleModal} />}
         </div>
       </div>
     );
