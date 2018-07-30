@@ -19,7 +19,6 @@ const Left = styled.span`
   padding: 20px;
   align-items: center;
   z-index: 3;
-  user-select: none;
 `;
 
 const Right = styled.span`
@@ -28,7 +27,6 @@ const Right = styled.span`
   padding: 20px;
   align-items: center;
   z-index: 3;
-  user-select: none;
   right: 0;
 `;
 
