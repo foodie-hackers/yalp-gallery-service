@@ -7,6 +7,8 @@ const Caption = styled.div`
   bottom: 0;
   width: 100%;
   position: absolute;
+  font-family: arial;
+  font-size: 12px;
 `;
 
 const Frame = styled.div`

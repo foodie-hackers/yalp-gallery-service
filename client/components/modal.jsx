@@ -18,7 +18,7 @@ const Overlay = styled.div`
 
 const ModalBox = styled.div`
   background: white;
-  width: 90%;
+  width: 70%;
   height: 90%;
   top: 50%
   left: 50%
@@ -29,14 +29,19 @@ const PhotoBox = styled.div`
   position: relative;
   float: left;
   height: 100%;
-  width: 75%;
+  width: 80%
 `;
 
 const InfoBox = styled.div`
-  position: relative;
+
   float: right;
   height: 100%;
-  width: 25%;
+  width: 20%
+`;
+
+const Text = styled.p`
+  font-family: arial;
+  padding: 10px;
 `;
 
 const Left = styled.div`
@@ -106,7 +111,11 @@ class Modal extends React.Component {
               <Photo photo={photos[current].url} />
             </PhotoBox>
             <InfoBox>
-              {captions[current].caption}
+              <img src='https://puu.sh/B5oxj/f0d0ac2f3a.png' />
+              <Text>
+                {captions[current].caption}
+              </Text>
+              <img src='https://puu.sh/B5oWt/e263868ec2.png' />
             </InfoBox>
           </ModalBox>
         </Overlay>
