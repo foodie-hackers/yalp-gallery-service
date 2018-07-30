@@ -149,29 +149,39 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-const addDummy = (callback) => {
+const addRestaurants = (callback) => {
   for (let i = 0; i < dummy.length; i += 1) {
     const str = `INSERT into restaurants (name) VALUES ("${dummy[i].name}")`;
     connection.query(str, (err) => {
       if (err) {
         callback(err);
-      } else {
-        for (let j = 0; j < 5; j += 1) {
-          const rngURL = Math.floor(Math.random() * 24);
-          const rngCAP = Math.floor(Math.random() * 9);
-          const str2 = `INSERT into photos (restaurant_id, url, caption) VALUES (${i}, "${urls[rngURL]}", "${caps[rngCAP]}")`;
-          connection.query(str2, (err2) => {
-            if (err2) {
-              callback(err2);
-            }
-          });
-        }
       }
     });
   }
 };
 
-addDummy((err) => {
+const addPhotos = (callback) => {
+  for (let i = 1; i <= 100; i += 1) {
+    for (let j = 0; j < 5; j += 1) {
+      const rngURL = Math.floor(Math.random() * 24);
+      const rngCAP = Math.floor(Math.random() * 9);
+      const str = `INSERT into photos (restaurant_id, url, caption) VALUES (${i}, "${urls[rngURL]}", "${caps[rngCAP]}")`;
+      connection.query(str, (err) => {
+        if (err) {
+          callback(err);
+        }
+      });
+    }
+  }
+};
+
+addRestaurants((err) => {
+  if (err) {
+    console.log(err);
+  }
+});
+
+addPhotos((err) => {
   if (err) {
     console.log(err);
   }
