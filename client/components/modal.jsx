@@ -51,6 +51,7 @@ const Left = styled.div`
   top: 50%;
   transform: translate(50%, -50%);
   z-index: 3;
+  user-select: none;
 `;
 
 const Right = styled.div`
@@ -61,6 +62,7 @@ const Right = styled.div`
   transform: translate(-50%, -50%);
   z-index: 3;
   right: 0;
+  user-select: none;
 `;
 
 class Modal extends React.Component {
