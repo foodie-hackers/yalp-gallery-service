@@ -186,3 +186,5 @@ addPhotos((err) => {
     console.log(err);
   }
 });
+
+connection.end();
