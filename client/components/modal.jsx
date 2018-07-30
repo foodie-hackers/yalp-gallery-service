@@ -1,6 +1,78 @@
 import React from 'react';
+import styled from 'styled-components';
 import Photo from './photo';
 import Arrow from './arrow';
+
+const Overlay = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 5;
+`;
+
+const ModalBox = styled.div`
+  background: white;
+  width: 70%;
+  height: 90%;
+  top: 50%
+  left: 50%
+`;
+
+const PhotoBox = styled.div`
+  background-color: black;
+  position: relative;
+  float: left;
+  height: 100%;
+  width: 80%
+`;
+
+const InfoBox = styled.div`
+  float: right;
+  height: 100%;
+  width: 20%
+`;
+
+const Text = styled.p`
+  font-family: arial;
+  padding: 10px;
+`;
+
+const Left = styled.div`
+  cursor: pointer;
+  position: absolute;
+  padding: 10px;
+  top: 50%;
+  transform: translate(50%, -50%);
+  z-index: 3;
+  user-select: none;
+`;
+
+const Right = styled.div`
+  cursor: pointer;
+  position: absolute;
+  padding: 10px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  right: 0;
+  user-select: none;
+`;
+
+const Close = styled.div`
+  position: absolute;
+  top: 2.5%;
+  right: 15%;
+  font-family: arial;
+  cursor: pointer;
+  color: grey;
+  font-size: 12;
+`;
 
 class Modal extends React.Component {
   constructor(props) {
@@ -12,12 +84,16 @@ class Modal extends React.Component {
 
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);
+    this.closeEsc = this.closeEsc.bind(this);
   }
 
-  // componentDidMount() {
-  //   const { index } = this.props;
-  //   this.setState({ current: index });
-  // }
+  componentDidMount() {
+    window.addEventListener('keyup', this.closeEsc, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keyup', this.closeEsc, false);
+  }
 
   prev() {
     const { current } = this.state;
@@ -35,15 +111,44 @@ class Modal extends React.Component {
     this.setState({ current: index });
   }
 
+  closeEsc(e) {
+    const { close } = this.props;
+    if (e.keyCode === 27) {
+      close();
+    }
+    window.removeEventListener('keyup', this.closeEsc, false);
+  }
+
   render() {
     const { current } = this.state;
     const { photos } = this.props;
     const { captions } = this.props;
+    const { close } = this.props;
     return (
       <div>
-        <Arrow click={this.prev} icon="<" />
-        <Arrow click={this.next} icon=">" />
-        <Photo photo={photos[current].url} caption={captions[current].caption} />
+        <Overlay>
+          <ModalBox>
+            <Close type='button' onClick={close}>Close X</Close>
+            <PhotoBox>
+              <Left>
+                <Arrow click={this.prev} icon="<" />
+              </Left>
+
+              <Right>
+                <Arrow click={this.next} icon=">" />
+              </Right>
+
+              <Photo photo={photos[current].url} />
+            </PhotoBox>
+            <InfoBox>
+              <img src='https://puu.sh/B5oxj/f0d0ac2f3a.png' />
+              <Text>
+                {captions[current].caption}
+              </Text>
+              <img src='https://puu.sh/B5oWt/e263868ec2.png' />
+            </InfoBox>
+          </ModalBox>
+        </Overlay>
       </div>
     );
   }
