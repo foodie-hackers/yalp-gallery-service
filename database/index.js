@@ -31,4 +31,4 @@ const getCaps = (id, callback) => {
   });
 };
 
-module.exports = { getPhotos, getCaps };
+module.exports = { getPhotos, getCaps, connection };

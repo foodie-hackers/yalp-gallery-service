@@ -145,7 +145,14 @@ class App extends React.Component {
         </div>
 
         <div>
-          {modal && <Modal photos={photos} captions={captions} index={modalIndex} close={this.toggleModal} />}
+          {modal && (
+          <Modal
+            photos={photos}
+            captions={captions}
+            index={modalIndex}
+            close={this.toggleModal}
+          />
+          ) }
         </div>
       </div>
     );

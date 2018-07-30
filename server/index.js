@@ -26,4 +26,8 @@ server.get('/restaurants/:id/photos', (req, res) => {
   });
 });
 
-server.listen(3002, () => console.log('listening on 3002!!'));
+if (process.env.NODE_ENV !== 'test') {
+  server.listen(3002, () => console.log('listening on 3002'));
+}
+
+// server.listen(3002, () => console.log('listening on 3002!!'));
