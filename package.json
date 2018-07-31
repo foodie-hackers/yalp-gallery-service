@@ -59,7 +59,8 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "database/**/*.{js,jsx}",
-      "server/**/*.{js,jsx}"
+      "server/**/*.{js,jsx}",
+      "!database/dummy.js"
     ]
   }
 }
