@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import Photo from './photo';
 import Arrow from './arrow';
@@ -90,21 +91,25 @@ class Modal extends React.Component {
     this.closeEsc = this.closeEsc.bind(this);
     this.prevKey = this.prevKey.bind(this);
     this.nextKey = this.nextKey.bind(this);
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener('keyup', this.closeEsc, false);
+    window.addEventListener('keyup', this.closeEsc, true);
     window.addEventListener('keyup', this.prevKey, false);
     window.addEventListener('keyup', this.nextKey, false);
+    document.addEventListener('click', this.handleOutsideClick, false);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('keyup', this.closeEsc, false);
-    window.removeEventListener('keyup', this.prevKey, false);
-    window.removeEventListener('keyup', this.nextKey, false);
+  handleOutsideClick(e) {
+    const { close } = this.props;
+    if (e.target.getAttribute('class') === 'sc-iwsKbI jikBz') {
+      close();
+    }
   }
 
   prev() {
+    console.log(this);
     const { current } = this.state;
     const { photos } = this.props;
     const last = photos.length - 1;
