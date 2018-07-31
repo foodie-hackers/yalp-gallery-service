@@ -42,6 +42,7 @@ class App extends React.Component {
       modal: false,
       modalIndex: null,
       current: 1,
+      id: this.props.location.pathname.substr(1),
     };
 
     this.getPhotos = this.getPhotos.bind(this);
@@ -52,13 +53,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getPhotos();
+    const { id } = this.state;
+    this.getPhotos(id);
   }
 
   getPhotos() {
+    const { id } = this.state;
     $.ajax({
       type: 'GET',
-      url: 'restaurants/1/photos',
+      url: `restaurants/${id}/photos`,
       success: (data) => {
         this.setState({ photos: data.photo, captions: data.caption });
       },
@@ -164,5 +167,4 @@ class App extends React.Component {
   }
 }
 
-
-export default App;
+export default App
