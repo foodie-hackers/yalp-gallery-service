@@ -46,6 +46,7 @@ class App extends React.Component {
 
     this.getPhotos = this.getPhotos.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);
   }
@@ -62,6 +63,10 @@ class App extends React.Component {
         this.setState({ photos: data.photo, captions: data.caption });
       },
     });
+  }
+
+  closeModal() {
+    this.setState({ modal: false });
   }
 
   toggleModal(e) {
@@ -150,7 +155,7 @@ class App extends React.Component {
             photos={photos}
             captions={captions}
             index={modalIndex}
-            close={this.toggleModal}
+            close={this.closeModal}
           />
           ) }
         </div>
