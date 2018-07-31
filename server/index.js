@@ -26,6 +26,10 @@ server.get('/restaurants/:id/photos', (req, res) => {
   });
 });
 
+server.use('/*', (req, res) => {
+  res.sendFile(`${__dirname.substring(0, __dirname.length-7)}/public/index.html`);
+});
+
 if (process.env.NODE_ENV !== 'test') {
   server.listen(3002, () => console.log('listening on 3002'));
 }
