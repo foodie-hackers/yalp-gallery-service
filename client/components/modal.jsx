@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Photo from './photo';
 import Arrow from './arrow';
+import Info from './info';
+
+// <img src='https://puu.sh/B5oWt/e263868ec2.png' />
 
 const Overlay = styled.div`
   display: flex;
@@ -19,9 +22,10 @@ const Overlay = styled.div`
 const ModalBox = styled.div`
   background: white;
   width: 70%;
-  height: 90%;
+  height: 93%;
   top: 50%
   left: 50%
+  border-radius: 8px;
 `;
 
 const PhotoBox = styled.div`
@@ -29,18 +33,14 @@ const PhotoBox = styled.div`
   position: relative;
   float: left;
   height: 100%;
-  width: 80%
+  width: 77%
+  border-radius: 8px 0px 0px 8px;
 `;
 
 const InfoBox = styled.div`
   float: right;
   height: 100%;
-  width: 20%
-`;
-
-const Text = styled.p`
-  font-family: arial;
-  padding: 10px;
+  width: 23%;
 `;
 
 const Left = styled.div`
@@ -66,12 +66,15 @@ const Right = styled.div`
 
 const Close = styled.div`
   position: absolute;
-  top: 2.5%;
+  top: 1%;
   right: 15%;
   font-family: arial;
   cursor: pointer;
   color: grey;
   font-size: 12;
+  :hover {
+    color: white;
+  }
 `;
 
 class Modal extends React.Component {
@@ -141,11 +144,7 @@ class Modal extends React.Component {
               <Photo photo={photos[current].url} />
             </PhotoBox>
             <InfoBox>
-              <img src='https://puu.sh/B5oxj/f0d0ac2f3a.png' />
-              <Text>
-                {captions[current].caption}
-              </Text>
-              <img src='https://puu.sh/B5oWt/e263868ec2.png' />
+              <Info caption={captions[current].caption} />
             </InfoBox>
           </ModalBox>
         </Overlay>
