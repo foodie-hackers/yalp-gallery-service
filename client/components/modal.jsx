@@ -88,14 +88,20 @@ class Modal extends React.Component {
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);
     this.closeEsc = this.closeEsc.bind(this);
+    this.prevKey = this.prevKey.bind(this);
+    this.nextKey = this.nextKey.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener('keyup', this.closeEsc, false);
+    window.addEventListener('keyup', this.prevKey, false);
+    window.addEventListener('keyup', this.nextKey, false);
   }
 
   componentWillUnmount() {
     window.removeEventListener('keyup', this.closeEsc, false);
+    window.removeEventListener('keyup', this.prevKey, false);
+    window.removeEventListener('keyup', this.nextKey, false);
   }
 
   prev() {
@@ -112,6 +118,18 @@ class Modal extends React.Component {
     const last = photos.length - 1;
     const index = current === last ? 0 : current + 1;
     this.setState({ current: index });
+  }
+
+  prevKey(e) {
+    if (e.keyCode === 37) {
+      this.prev();
+    }
+  }
+
+  nextKey(e) {
+    if (e.keyCode === 39) {
+      this.next();
+    }
   }
 
   closeEsc(e) {
