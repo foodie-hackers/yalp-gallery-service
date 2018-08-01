@@ -15,7 +15,8 @@ const Button = styled.div`
 
 const Arrow = ({ click, icon }) => (
   <Button
-    onClick={click}>
+    onClick={click}
+  >
     { icon }
   </Button>
 );
