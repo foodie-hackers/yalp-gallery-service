@@ -109,7 +109,6 @@ class Modal extends React.Component {
   }
 
   prev() {
-    console.log(this);
     const { current } = this.state;
     const { photos } = this.props;
     const last = photos.length - 1;

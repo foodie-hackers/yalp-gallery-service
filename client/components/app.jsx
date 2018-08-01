@@ -5,11 +5,16 @@ import Modal from './modal';
 import Thumb from './thumb';
 import Arrow from './arrow';
 
+const Contain = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+`;
+
 const Carousel = styled.div`
   display: flex;
   position: relative;
   width: 660px;
-  margin: auto;
   align-items: center;
 `;
 
@@ -118,7 +123,8 @@ class App extends React.Component {
 
     return (
       <div>
-        <div>
+        <Contain>
+          <img src="https://s3-us-west-1.amazonaws.com/yalp-photos/YalpMap.png" />
           <Carousel>
             <Left>
               <Arrow click={this.prev} icon="<" />
@@ -147,7 +153,7 @@ class App extends React.Component {
               index={three}
             />
           </Carousel>
-        </div>
+        </Contain>
 
         <div>
           {modal && (
