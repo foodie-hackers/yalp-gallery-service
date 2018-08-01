@@ -9,6 +9,12 @@ server.use(express.static('public'));
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 server.get('/restaurants/:id/photos', (req, res) => {
   db.getPhotos(req.params.id, (err1, photo) => {
     if (err1) {

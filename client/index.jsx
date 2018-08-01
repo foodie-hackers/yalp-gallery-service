@@ -8,5 +8,5 @@ const AppWithRouter = withRouter(props => <App {...props} />);
 ReactDOM.render(
   <BrowserRouter>
     <AppWithRouter />
-  </BrowserRouter>, document.getElementById('app')
+  </BrowserRouter>, document.getElementById('Gallery')
 );
