@@ -4,7 +4,7 @@ const db = require('../database');
 
 const server = express();
 
-server.use(express.static('public'));
+server.use('/:id/', express.static('public'));
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -24,7 +24,6 @@ server.get('/restaurants/:id/photos', (req, res) => {
         if (err2) {
           console.log(err2);
         } else {
-          console.log('hi');
           res.send({ photo, caption });
         }
       });

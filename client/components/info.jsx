@@ -72,7 +72,7 @@ const Info = ({ caption }) => (
         <Text>
           494
         </Text>
-        <img width='18px' src='https://s3-us-west-1.amazonaws.com/yalp-photos/star.svg' />
+        <img width="18px" src='https://s3-us-west-1.amazonaws.com/yalp-photos/star.svg' />
         <Text>
           123
         </Text>
