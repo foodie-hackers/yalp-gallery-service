@@ -42,7 +42,7 @@ class App extends React.Component {
       modal: false,
       modalIndex: null,
       current: 1,
-      id: this.props.location.pathname.substr(1),
+      id: this.props.location.pathname.slice(1, this.props.location.pathname.length-1),
     };
 
     this.getPhotos = this.getPhotos.bind(this);
@@ -54,14 +54,14 @@ class App extends React.Component {
 
   componentDidMount() {
     const { id } = this.state;
-    this.getPhotos(id);
+    this.getPhotos();
   }
 
   getPhotos() {
     const { id } = this.state;
     $.ajax({
       type: 'GET',
-      url: `restaurants/${id}/photos`,
+      url: `http://localhost:3002/restaurants/${id}/photos`,
       success: (data) => {
         this.setState({ photos: data.photo, captions: data.caption });
       },
@@ -119,9 +119,6 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <h1>
-            Yalp: Photo Gallery
-          </h1>
           <Carousel>
             <Left>
               <Arrow click={this.prev} icon="<" />
