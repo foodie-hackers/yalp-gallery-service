@@ -16,6 +16,7 @@ const Date = styled.div`
   font-size: 12px;
   color: #bbb;
   padding-bottom: 15px;
+  user-select: none;
 `;
 
 const Question = styled.div`
@@ -24,6 +25,7 @@ const Question = styled.div`
   font-weight: bold;
   color: #666;
   padding-bottom: 5px;
+  user-select: none;
 `;
 
 const Header = styled.div`
@@ -44,6 +46,7 @@ const Text = styled.span`
   font-weight: bold;
   color: #666;
   vertical-align: 2px;
+  user-select: none;
 `;
 
 const Footer = styled.div`
@@ -58,15 +61,16 @@ const Cap = styled.div`
   font-family: arial;
   font-size: 14px;
   padding-bottom: 10px;
+  user-select: none;
 `;
 
 const Info = ({ caption }) => (
   <Box>
     <Header>
-      <img width='30px' height='30px' style={{paddingRight: '7px', borderRadius: '5px'}}src='https://s3-media3.fl.yelpcdn.com/photo/8txsL4hMo56uNjiHya5BBA/30s.jpg' />
+      <img width='30px' height='30px' style={{marginRight: '7px', borderRadius: '5px'}}src='https://s3-us-west-1.amazonaws.com/review-list/Photos/Justin+L..jpg' />
       <div>
         <div>
-          Angie L.
+          Justin L.
         </div>
         <img width='18px' src='https://s3-us-west-1.amazonaws.com/yalp-photos/people.svg' />
         <Text>
