@@ -8,11 +8,11 @@ const Caption = styled.div`
   left: 0;
   right: 0;
   padding: 5px 2.5px 5px 2.5px;
-  height: 42px;
+  height: 36px;
   position: absolute;
   font-family: arial;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 600;
   display: flex;
   align-items: center;
 
@@ -22,6 +22,7 @@ const Avatar = styled.div`
   height: 30px;
   width: 30px;
   min-width 30px;
+  margin-left: 5px;
   margin-right: 8px;
   visibility: hidden;
 `;
@@ -44,7 +45,7 @@ const Frame = styled.div`
     z-index: 2;
     box-shadow: 0px 0px 15px 0px grey;
     div {
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.4);
       color: white;
       transition: 0.5s ease;
       visibility: visible;
@@ -65,7 +66,7 @@ const Thumb = ({
       <img src={photo} onClick={toggleModal} index={index} />
       <Caption style={center ?
         {
-          backgroundColor: 'rgba(0, 0, 0, 0.6)',
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
           color: 'white'
         } : {}}
       >
