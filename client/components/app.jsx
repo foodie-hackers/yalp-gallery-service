@@ -5,10 +5,25 @@ import Modal from './modal';
 import Thumb from './thumb';
 import Arrow from './arrow';
 
+const Window = styled.div`
+  display: flex;
+  justify-content: center;
+
+`;
+
 const Contain = styled.div`
   display: flex;
+  justify-content: center;
+  width: 100%;
   align-items: center;
+`;
+const Grey = styled.div`
   background-color: #f5f5f5;
+  position: fixed;
+  top: 0;
+  height: 303px;
+  width: 100%;
+  z-index: -1;
 `;
 
 const Carousel = styled.div`
@@ -16,6 +31,7 @@ const Carousel = styled.div`
   position: relative;
   width: 660px;
   align-items: center;
+  z-index: 1;
 `;
 
 const Left = styled.span`
@@ -47,6 +63,7 @@ class App extends React.Component {
       modal: false,
       modalIndex: null,
       current: 1,
+      mouse: true,
       id: this.props.location.pathname.slice(1, this.props.location.pathname.length-1),
     };
 
@@ -55,6 +72,8 @@ class App extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);
+    this.galleryEnter = this.galleryEnter.bind(this);
+    this.galleryLeave = this.galleryLeave.bind(this);
   }
 
   componentDidMount() {
@@ -101,6 +120,16 @@ class App extends React.Component {
     this.setState({ current: index });
   }
 
+  galleryEnter() {
+    const { mouse } = this.state;
+    this.setState({ mouse: false });
+  }
+
+  galleryLeave() {
+    const { mouse } = this.state;
+    this.setState({ mouse: true });
+  }
+
   render() {
     const {
       photos, captions, modal, current, modalIndex,
@@ -122,10 +151,11 @@ class App extends React.Component {
     const two = current;
 
     return (
-      <div>
+      <Window>
         <Contain>
+          <Grey />
           <img src="https://s3-us-west-1.amazonaws.com/yalp-photos/YalpMap.png" />
-          <Carousel>
+          <Carousel onMouseEnter={this.galleryEnter} onMouseLeave={this.galleryLeave}>
             <Left>
               <Arrow click={this.prev} icon="<" />
             </Left>
@@ -141,6 +171,7 @@ class App extends React.Component {
               index={one}
             />
             <Thumb
+              center={this.state.mouse}
               photo={photos[two].url}
               toggleModal={this.toggleModal}
               caption={captions[two].caption}
@@ -165,7 +196,7 @@ class App extends React.Component {
           />
           ) }
         </div>
-      </div>
+      </Window>
     );
   }
 }
