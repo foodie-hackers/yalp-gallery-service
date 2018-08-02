@@ -8,7 +8,6 @@ import Arrow from './arrow';
 const Window = styled.div`
   display: flex;
   justify-content: center;
-
 `;
 
 const Contain = styled.div`
@@ -16,12 +15,14 @@ const Contain = styled.div`
   justify-content: center;
   width: 100%;
   align-items: center;
+  position: relative;
 `;
+
 const Grey = styled.div`
   background-color: #f5f5f5;
-  position: fixed;
+  position: absolute;
   top: 0;
-  height: 303px;
+  height: 295px;
   width: 100%;
   z-index: -1;
 `;
