@@ -1,13 +1,20 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
+  host: process.env.RDS_HOSTNAME || 'localhost',
+  user: process.env.RDS_USERNAME || 'root',
+  password: process.env.RDS_PASSWORD || '',
   database: 'yalp_photos',
 });
 
-connection.connect();
+connection.connect(function(err) {
+  if (err) {
+    console.error('error connecting: ' + err.stack);
+    return;
+  }
+
+  console.log('connected as id ' + connection.threadId);
+});
 
 const getPhotos = (id, callback) => {
   const str = `SELECT url FROM photos WHERE restaurant_id=${id}`;
@@ -31,4 +38,7 @@ const getCaps = (id, callback) => {
   });
 };
 
+// getPhotos(1, (err, re) => {
+//   console.log(res);
+// })
 module.exports = { getPhotos, getCaps, connection };
