@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const db = require('../database');
 
 const server = express();
+const port = process.env.PORT || 3002;
 
 server.use('/:id/', express.static('public'));
 
@@ -36,7 +37,7 @@ server.use('/*', (req, res) => {
 });
 
 if (process.env.NODE_ENV !== 'test') {
-  server.listen(3002, () => console.log('listening on 3002'));
+  server.listen(port, () => console.log('listening on 3002'));
 }
 
 module.exports = { server };
