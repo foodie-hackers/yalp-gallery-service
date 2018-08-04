@@ -86,7 +86,7 @@ class App extends React.Component {
     const { id } = this.state;
     $.ajax({
       type: 'GET',
-      url: `/restaurants/${id}/photos`,
+      url: `http://yalp-gallery-env.vzsgx3frke.us-west-1.elasticbeanstalk.com/restaurants/${id}/photos`,
       success: (data) => {
         this.setState({ photos: data.photo, captions: data.caption });
       },
