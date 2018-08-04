@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "react-dev": "webpack -d --watch",
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
+    "server": "nodemon server/index.js",
     "fix": "eslint --fix"
   },
   "repository": {

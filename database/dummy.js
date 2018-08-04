@@ -141,9 +141,9 @@ const caps = ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed port
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
+  host: 'yalp-gallery.cwbbaq04lx3f.us-west-1.rds.amazonaws.com',
+  user: 'jtlin91',
+  password: 'Velshie11',
   database: 'yalp_photos',
 });
 
