@@ -78,6 +78,51 @@ const Close = styled.div`
   }
 `;
 
+const PhotoBar = styled.div`
+  height: 30px;
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  background-color: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-family: arial;
+  border-bottom-left-radius: 8px;
+`;
+
+const Count = styled.div`
+  color: white;
+  padding: 3px;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  margin: 0 auto;
+  opacity: 0.5;
+
+`;
+
+const Button = styled.span`
+  display: flex;
+  margin-left 3px;
+  align-items: center;
+  color: white;
+  padding: 3px
+  font-weight: 550;
+  opacity: 0.5;
+  img {
+    padding: 3px;
+  }
+  :hover {
+    opacity: 1;
+  }
+`;
+
+const Action = styled.div`
+  display: flex;
+`;
+
 class Modal extends React.Component {
   constructor(props) {
     super(props);
@@ -164,6 +209,30 @@ class Modal extends React.Component {
               </Right>
 
               <Photo photo={photos[current].url} />
+              <PhotoBar>
+                <Button>
+                  <img src="https://s3-us-west-1.amazonaws.com/yalp-photos/Browse.png" />
+                  Browse all
+                </Button>
+                <Count>
+                  {current + 1}
+                  &nbsp;of&nbsp;
+                  {photos.length}
+                </Count>
+                <Action>
+                  <Button>
+                    <img src="https://s3-us-west-1.amazonaws.com/yalp-photos/Share.png" />
+                    Share
+                  </Button>
+                  <Button>
+                    <img src="https://s3-us-west-1.amazonaws.com/yalp-photos/Comp.png" />
+                    Compliment
+                  </Button>
+                  <Button style={{ opacity: '1' }}>
+                    <img src="https://s3-us-west-1.amazonaws.com/yalp-photos/Flag.png" />
+                  </Button>
+                </Action>
+              </PhotoBar>
             </PhotoBox>
             <InfoBox>
               <Info caption={captions[current].caption} />

@@ -7,15 +7,15 @@ const Caption = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 5px 2.5px 5px 2.5px;
+  padding: 3px 2.5px 3px 2.5px;
   height: 36px;
+  max-height: 36px;
   position: absolute;
   font-family: arial;
   font-size: 12px;
   font-weight: 600;
   display: flex;
   align-items: center;
-
 `;
 
 const Avatar = styled.div`
@@ -76,7 +76,7 @@ const Thumb = ({
           } : {}}>
           <img src="https://s3-us-west-1.amazonaws.com/review-list/Photos/Justin+L..jpg" />
         </Avatar>
-        <span style={{ height: '30px' }}>
+        <span style={{height: '30px', width: '160px', overflow: 'hidden'}}>
           {caption}
         </span>
       </Caption>

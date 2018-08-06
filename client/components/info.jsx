@@ -34,7 +34,7 @@ const Header = styled.div`
   font-family: arial;
   font-size: 14px;
   font-weight: bold;
-  color: blue;
+  color: #0073bb;
   padding-bottom: 10px;
 `;
 
